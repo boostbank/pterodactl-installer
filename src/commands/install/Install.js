@@ -74,8 +74,8 @@ class Pipeline extends Command {
                 await sh("wget https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz", "/var/www/pterodactyl");
                 await sh("tar -xzvf panel.tar.gz", "/var/www/pterodactyl");
                 await sh("chmod -R 755 storage/* bootstrap/cache/", "/var/www/pterodactyl");
-                await sh("cp .env.example .env");
-                await sh("composer install --no-dev --optimize-autoloader --no-suggest");
+                await sh("cp .env.example .env", "/var/www/pterodactyl");
+                await sh("composer install --no-dev --optimize-autoloader", "/var/www/pterodactyl");
 
             }
             catch (e) {
