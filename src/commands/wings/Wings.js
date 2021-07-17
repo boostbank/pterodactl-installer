@@ -25,7 +25,7 @@ class Wings extends Command {
                 await sh("systemctl enable --now docker");
                 const grub = fs.readFileSync("/etc/default/grub").toString();
                 const updatedGrub = grub.replace(`GRUB_CMDLINE_LINUX_DEFAULT=""`, `GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"`)
-                console.log(updatedGrub);
+                fs.writeFileSync("/etc/default/grub", updatedGrub);
                 
             }
             catch (e) {
