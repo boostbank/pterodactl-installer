@@ -6,7 +6,7 @@ const fs = require('fs');
 
 class PreInstall extends Step {
   constructor() {
-    super("init");
+    super("preinstall");
   }
 
   run(args) {

@@ -5,8 +5,10 @@ const runner = require('./../tools/step-runner');
 const CommandParser = require('./../tools/CommandParser');
 // Commands
 const Help = require('./../commands/help/Help');
+const Install = require("./../commands/install/Install");
+const Setup = require('../commands/setup/Setup');
 
-const allowedCommands = [new Help()];
+const allowedCommands = [new Help(), new Install(), new Setup()];
 
 const commands = new CommandParser(allowedCommands);
 

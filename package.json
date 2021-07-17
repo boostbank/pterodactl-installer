@@ -25,6 +25,7 @@
   "homepage": "https://github.com/boostbank/pterodactyl-installer#readme",
   "dependencies": {
     "colors": "^1.4.0",
-    "cross-spawn": "^7.0.3"
+    "cross-spawn": "^7.0.3",
+    "random-password": "^0.1.2"
   }
 }
