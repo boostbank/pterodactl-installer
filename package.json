@@ -1,0 +1,30 @@
+{
+  "name": "@boostbank/pterodactyl-installer",
+  "version": "1.0.0",
+  "description": "Helpful Pterodactyl Installer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boostbank/pterodactyl-installer.git"
+  },
+  "keywords": [
+    "Pterodactyl",
+    "Installer"
+  ],
+  "bin": {
+    "pti": "./src/cli.js"
+  },
+  "author": "dbteku",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boostbank/pterodactyl-installer/issues"
+  },
+  "homepage": "https://github.com/boostbank/pterodactyl-installer#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cross-spawn": "^7.0.3"
+  }
+}
