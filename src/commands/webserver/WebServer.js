@@ -36,7 +36,8 @@ class WebServer extends Command {
                     // do crontab for renew.
                     await sh(`(crontab -u root -l ; echo "0 0 1 * * certbot renew >> /dev/null 2>&1") | crontab -u root -`)
                     await sh("crontab -u root -l");
-                    const site = `server_tokens off;
+                    const site = `
+                    server_tokens off;
 
                     server {
                         listen 80;

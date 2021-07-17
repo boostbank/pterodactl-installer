@@ -35,7 +35,8 @@ class Setup extends Command {
                 await sh(`(crontab -u root -l ; echo "* * * * * php /var/www/pterodactyl/artisan schedule:run >> /dev/null 2>&1") | crontab -u root -`)
                 await sh("crontab -u root -l");
                 console.title("Adding Pterodactyl service...");
-                const pService = `# Pterodactyl Queue Worker File
+                const pService = `
+                # Pterodactyl Queue Worker File
                 # ----------------------------------
                 
                 [Unit]

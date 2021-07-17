@@ -30,7 +30,8 @@ class Wings extends Command {
                 await sh("mkdir -p /etc/pterodactyl");
                 await sh("curl -L -o /usr/local/bin/wings https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_amd64");
                 await sh("chmod u+x /usr/local/bin/wings");
-                const wingsService = `[Unit]
+                const wingsService = `
+                [Unit]
                 Description=Pterodactyl Wings Daemon
                 After=docker.service
                 Requires=docker.service
