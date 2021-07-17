@@ -7,8 +7,9 @@ const CommandParser = require('./../tools/CommandParser');
 const Help = require('./../commands/help/Help');
 const Install = require("./../commands/install/Install");
 const Setup = require('../commands/setup/Setup');
+const WebServer = require('../commands/webserver/WebServer');
 
-const allowedCommands = [new Help(), new Install(), new Setup()];
+const allowedCommands = [new Help(), new Install(), new Setup(), new WebServer()];
 
 const commands = new CommandParser(allowedCommands);
 
