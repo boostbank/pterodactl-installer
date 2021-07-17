@@ -1,15 +1,15 @@
 const { sh } = require("../../tools/process-runner");
 const Command = require("../../models/Command");
 const CommandParser = require("../../tools/CommandParser");
-const InstallHelp = require("./help/InstallHelp");
+const WebServerHelp = require("./help/WebServerHelp");
 const generator = require('random-password');
 const fs = require('fs');
 const parseFlags = require("./../../tools/flags-parser");
 
-const commands = new CommandParser([new InstallHelp()]);
+const commands = new CommandParser([new WebServerHelp()]);
 
 const usage = `
-pti setup - Sets up Pterodactyl
+pti webserver - Sets up Pterodactyl WebServer
 `;
 
 class WebServer extends Command {

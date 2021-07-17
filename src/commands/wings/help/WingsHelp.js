@@ -5,14 +5,14 @@ const colors = require('colors');
 const helpMessage = `
 ${colors.yellow("-----WebServer Help-----")}
 ${colors.grey("Commands:")}
-     ${colors.cyan("pti setup help - Webserver help command.")}
-     ${colors.cyan("pti setup - Setup Pterodactyl.")}
+     ${colors.cyan("pti webserver help - Webserver help command.")}
+     ${colors.cyan("pti wings - Installs wings.")}
 ${colors.yellow("-----------------------")}`;
 
-class WebServerHelp extends Command{
+class WingsHelp extends Command{
 
     constructor(){
-        super("help", "pti webserver help");
+        super("help", "pti wings help");
     }
 
     runCommand(args){
@@ -21,4 +21,4 @@ class WebServerHelp extends Command{
 
 }
 
-module.exports = WebServerHelp;
+module.exports = WingsHelp;

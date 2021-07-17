@@ -8,8 +8,9 @@ const Help = require('./../commands/help/Help');
 const Install = require("./../commands/install/Install");
 const Setup = require('../commands/setup/Setup');
 const WebServer = require('../commands/webserver/WebServer');
+const Wings = require('../commands/wings/Wings');
 
-const allowedCommands = [new Help(), new Install(), new Setup(), new WebServer()];
+const allowedCommands = [new Help(), new Install(), new Setup(), new WebServer(), new Wings()];
 
 const commands = new CommandParser(allowedCommands);
 
