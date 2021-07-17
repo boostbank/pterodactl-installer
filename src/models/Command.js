@@ -1,58 +1,49 @@
-class Arguments {
-    constructor(args) {
-      this.args = args;
-    }
-  
-    getArgument(name) {
-      let argument = "";
-  
-      for (let i = 0; i < this.args.length; i++) {
-        const arg = this.args[i];
-        if (arg.name === name) {
-          i = this.args.length;
-          argument = arg.value;
-        }
-      }
-  
-      return argument;
-    }
-  
-    getAllByName(name){
-      let args = [];
-  
-      for (let i = 0; i < this.args.length; i++) {
-        const arg = this.args[i];
-        if (arg.name === name) {
-          args.push(arg);
-        }
-      }
-  
-      return args;
-    }
-  
-    hasArgument(name){
-      let has = false;
-  
-      for (let i = 0; i < this.args.length; i++) {
-        const arg = this.args[i];
-        if (arg.name === name) {
-          has = true;
-          i = this.args.length;
-        }
-      }
-  
-      return has;
-    }
-
-    addArgument(arg){
-        if(typeof arg === "object" && typeof arg.name === "string" && typeof arg.value === "string"){
-            if(arg.name.length > 0 && arg.value.length > 0){
-                if(!this.hasArgument(arg.name)){
-                    this.args.push(arg);
-                }
-            }
-        }
-    }
+const colors = require("colors");
+class Command {
+  constructor(cmd, usage) {
+    this.cmd = cmd;
+    this.usage = usage;
   }
-  
-  module.exports = Arguments;
+
+  runCommand(args) {}
+
+  isCommand(key) {
+    return key === this.cmd;
+  }
+
+  errorOut() {
+    console.error(
+      colors.bgRed(`\nCommand: ${colors.yellow(this.cmd)} failed with error!`)
+    );
+    process.exit(1);
+  }
+
+  unknownError(e){
+    console.printError("Unknown error occured!");
+    console.printError(e);
+    this.errorOut();
+  }
+
+  invalidCommand(message) {
+    console.error(
+      colors.bgRed(`\nCommand: ${colors.yellow(this.cmd)} was invalid!\n`)
+    );
+    if (typeof message === "string" && message.length > 0) {
+      console.error(colors.red(message));
+    }
+    process.exit(1);
+  }
+
+  static isValidCommand(value) {
+    return (
+      typeof value === "object" &&
+      value !== null &&
+      typeof value.cmd === "string" &&
+      typeof value.usage === "string" &&
+      typeof value.runCommand === "function" &&
+      typeof value.isCommand === "function"
+    );
+  }
+}
+
+module.exports = Command;
