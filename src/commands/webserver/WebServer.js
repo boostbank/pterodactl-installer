@@ -34,6 +34,8 @@ class WebServer extends Command {
                     await sh("apt install -y python3-certbot-nginx")
                     await sh(`certbot certonly --force-interactive --nginx -d ${domain}`)
                     // do crontab for renew.
+                    await sh(`(crontab -u root -l ; echo "0 0 1 * * certbot renew >> /dev/null 2>&1") | crontab -u root -`)
+                    await sh("crontab -u root -l");
                     const site = `server_tokens off;
 
                     server {
