@@ -105,6 +105,7 @@ class WebServer extends Command {
 
                     fs.writeFileSync("/etc/nginx/sites-available/pterodactyl.conf", site);
                     fs.unlinkSync("/etc/nginx/sites-available/default");
+                    fs.writeFileSync("/etc/nginx/sites-available/default", "");
                     await sh("ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf");
                     await sh("systemctl restart nginx");
                 }

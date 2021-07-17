@@ -22,12 +22,15 @@ class Setup extends Command {
         } else {
             try {
                 console.title("Setting up Pterodactyl...");
-                await sh("php artisan key:generate --force");
-                await sh("php artisan p:environment:setup");
-                await sh("php artisan p:environment:database");
-                await sh("php artisan p:environment:mail");
-                await sh("php artisan migrate --seed --force");
-                await sh("php artisan p:user:make");
+                console.printWarning("---SHOWING CREDENTIALS----");
+                await sh("cat /pti/credentials.json");
+                console.printWarning("---CREDENTIALS----");
+                await sh("php artisan key:generate --force", "/var/www/pterodactyl");
+                await sh("php artisan p:environment:setup", "/var/www/pterodactyl");
+                await sh("php artisan p:environment:database", "/var/www/pterodactyl");
+                await sh("php artisan p:environment:mail", "/var/www/pterodactyl");
+                await sh("php artisan migrate --seed --force", "/var/www/pterodactyl");
+                await sh("php artisan p:user:make", "/var/www/pterodactyl");
                 await sh("chown -R www-data:www-data /var/www/pterodactyl/*");
                 await sh(`(crontab -u root -l ; echo "* * * * * php /var/www/pterodactyl/artisan schedule:run >> /dev/null 2>&1") | crontab -u root -`)
                 await sh("crontab -u root -l");

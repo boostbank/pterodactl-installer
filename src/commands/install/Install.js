@@ -51,15 +51,15 @@ class Pipeline extends Command {
                         phpMyAdminPassword
                     }
                     fs.writeFileSync("/pti/credentials.json", JSON.stringify(credentials));
-                    await sh(`mysql -u root -e "create database IF NOT EXISTS pterodactyl;"`);
-                    await sh(`mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'panel' IDENTIFIED BY '${panelPassword}';"`, process.cwd(), process.env, true);
-                    console.msg(`> mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'panel' IDENTIFIED BY '****************';"`);
+                    await sh(`mysql -u root -e "create database IF NOT EXISTS panel;"`);
+                    await sh(`mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'pterodactyl' IDENTIFIED BY '${panelPassword}';"`, process.cwd(), process.env, true);
+                    console.msg(`> mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'pterodactyl' IDENTIFIED BY '****************';"`);
                     await sh(`mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'servers' IDENTIFIED BY '${serversPassword}';"`, process.cwd(), process.env, true)
                     console.msg(`> mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'servers' IDENTIFIED BY '****************';"`);
                     await sh(`mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'phpmyadmin' IDENTIFIED BY '${phpMyAdminPassword}';"`, process.cwd(), process.env, true)
                     console.msg(`> mysql -u root -e "use mysql; CREATE USER IF NOT EXISTS 'phpmyadmin' IDENTIFIED BY '****************';"`);
-                    await sh(`mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'panel' IDENTIFIED BY '${panelPassword}';"`, process.cwd(), process.env, true);
-                    console.msg(`> mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'panel' IDENTIFIED BY '****************';"`);
+                    await sh(`mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'pterodactyl' IDENTIFIED BY '${panelPassword}';"`, process.cwd(), process.env, true);
+                    console.msg(`> mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'pterodactyl' IDENTIFIED BY '****************';"`);
                     await sh(`mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'servers' IDENTIFIED BY '${serversPassword}';"`, process.cwd(), process.env, true)
                     console.msg(`> mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'servers' IDENTIFIED BY '****************';"`);
                     await sh(`mysql -u root -e "use mysql; GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin' IDENTIFIED BY '${phpMyAdminPassword}';"`, process.cwd(), process.env, true)
