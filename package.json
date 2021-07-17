@@ -1,6 +1,6 @@
 {
   "name": "@boostbank/pterodactyl-installer",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "Helpful Pterodactyl Installer",
   "main": "index.js",
   "scripts": {
